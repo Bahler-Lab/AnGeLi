@@ -3,6 +3,7 @@ import requests
 import gffutils
 import io
 import csv
+from enum import Enum
 
 # Pomebe base data URL, used as the common construct for other URLs
 POMBE_BASE_URL = 'https://www.pombase.org/data'
@@ -12,13 +13,41 @@ PEPTIDE_URL = POMBE_BASE_URL + "/Protein_data/PeptideStats.tsv"
 PROTEIN_COMPOSITION_URL = POMBE_BASE_URL + "/Protein_data/aa_composition.tsv"
 ALL_CHROMOSOMES_GFF3_URL = POMBE_BASE_URL + "/releases/latest/gff/Schizosaccharomyces_pombe_all_chromosomes.gff3"
 
+class Peptide(Enum):
+    SYSTEMATIC_ID = 0
+    MASS = 1
+    PI = 2
+    CHARGE = 3
 
+class ProteinComposition(Enum):
+    SYSTEMATIC_ID = 0
+    A = 1
+    C = 2
+    D = 3
+    E = 4
+    F = 5
+    G = 6
+    H = 7
+    I = 8
+    K = 9
+    L = 10
+    M = 11
+    N = 12
+    P = 13   
+    Q = 14
+    R = 15
+    S = 16
+    T = 17
+    V = 18
+    W = 19
+    Y = 20
+    
 def download_file(url):
     """
     Downloads a file from a URL and returns the content as a BytesIO object.
 
     :param url: The URL of the file.
-    :return: A BytesIO object containing the decompressed content.
+    :return: A BytesIO object containing the content.
     """
     # Send a GET request to the URL
     response = requests.get(url)
@@ -55,10 +84,10 @@ def download_and_decompress_gzip(url):
     
 def parse_tsv(file_obj):
     """
-    Downloads a file from a URL and returns the content as a BytesIO object.
+    Parses a tab-separated values (TSV) file and returns the content as a list of dictionaries.
 
-    :param url: The URL of the file.
-    :return: A BytesIO object containing the decompressed content.
+    :param url: The file object containing the TSV content.
+    :return: A list of dictionaries representing the TSV content.
     """
     # Open the TSV file
     # Reset the BytesIO stream's position to the beginning if it was previously read
@@ -70,17 +99,36 @@ def parse_tsv(file_obj):
 
 def parse_gff3(file_obj):
     """
-    Downloads a file from a URL and returns the content as a BytesIO object.
+    Parses a GG3 file and returns the features.
 
-    :param url: The URL of the file.
-    :return: A BytesIO object containing the decompressed content.
+    :param url: The gff file object
+    :return: A gffutils database object
     """
     # Create a database from the GFF3 file object
     db = gffutils.create_db(file_obj, dbfn=':memory:', force=True, keep_order=True, merge_strategy='merge', sort_attribute_values=True)
     
-    # Iterate through features in the database
-    for feature in db.all_features():
-        print(f"ID: {feature.id}, Type: {feature.featuretype}, Start: {feature.start}, End: {feature.end}, Strand: {feature.strand}")
+    return db
+
+def build_file_headers():
+    print("Building file headers")
+
+def build_protein_features():
+    print("Building protein features")
+
+def build_composition_features():
+    print("Building composition features")
+
+def build_chromosome_features():
+    print("Building chromosome features")
+
+def build_go_terms():
+    print("Building GO terms")
+
+def build_fypo_terms():
+    print("Building FYPO terms")
+
+def parse_original_AnGeLiDatabase():
+    print("Parsing the original AnGeLiDatabase.txt file")
 
 def main():
     """
