@@ -1,4 +1,4 @@
-# Database for the Angelli tool
+# Database for the AnGeLi tool
 
 The AnGeLi tool on the Bahler Lab website http://bahlerweb.cs.ucl.ac.uk/cgi-bin/GLA/GLA_input is used to look up terms associated with gene lists e.g. FPYO or GO terms. 
 
