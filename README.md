@@ -33,6 +33,7 @@ NOTES:
 * The primary field of joining is the Systematic_ID e.g. SPAC1002.01
 * Mapped value is fomrfrom source noted below, if there is no value then the original value is used.
 * GO and FYPO fields are ordered, it has not been verified is this is a requirement, but for sake of simplicity this convention has been retained.
+* For GO and FYPO we will scan the directory and fetch the latest file. This is because the date is embedded in the file name
 
 Heading details
 | Header Name | Description | Sample Value | 
@@ -99,5 +100,5 @@ Field Details
 | Abs_centromere | Abs. distance from centromere | NA   | NA | NA |
 | Rel_telomere | Relative distance from telomere | NA   | NA | NA |
 | Rel_centromere | Relative distance from centromere | NA   | NA | NA |
-| GO:XXXXX | Ordered GO terms | PomBase   | https://pombase.org/data/releases/latest/pombase-2025-01-01.gaf.gz | col 5 |
-| FYPO:XXXX | Ordered FYPO terms | PomBase | https://pombase.org/data/releases/latest/pombase-2025-01-01.phaf.gz | NA |
+| GO:XXXXX | Ordered GO terms | PomBase   | https://pombase.org/data/releases/latest/pombase-<DATE>.gaf.gz | col 5 |
+| FYPO:XXXX | Ordered FYPO terms | PomBase | https://pombase.org/data/releases/latest/pombase-<DATE>.phaf.gz | NA |
