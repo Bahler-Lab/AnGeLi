@@ -1,7 +1,7 @@
 # Test the files to make sure we have the enums correct.
 # All files are located in /test_data
 import unittest
-from angeli import AnGeLi
+from angeli import AnGeLi, Peptide
 
 class TestAnGeLi(unittest.TestCase):
 
@@ -19,9 +19,15 @@ class TestAnGeLi(unittest.TestCase):
 
     def test_peptides(self):
         """Test the greet function."""
-        # Expected greeting string
-        expected_greeting = "Hello, my name is Alice and I am 30 years old."
-        # Actual greeting from the greet function
-        actual_greeting = self.person.greet()
+        # file name
+        filename = "PeptideStats.tsv"
+        
+        systematic_id = "SPAC1002.03c"
+        expected_mass = "106.28"
+
+        data = self.db.search_protein_features(systematic_id)
         # Assert that the actual greeting matches the expected greeting
-        self.assertEqual(actual_greeting, expected_greeting)
+        self.assertEqual(data[0][Peptide.MASS.value], expected_mass)
+
+if __name__ == '__main__':
+    unittest.main()
