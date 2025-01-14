@@ -51,30 +51,30 @@ Field Details
 
 | Shortfield | Longfield | Source | File | Position in File |
 | :---: | :---: | :---: | :---: | :---: |
-| Mass | Molecular weight (kDa)   | PomBase   | PeptideStats.tsv | col 2 |
-| pI | Isoelectric point (predicted pH)   | PomBase   | PeptideStats.tsv | col 3 |
-| Charge | Charge | PomBase   | PeptideStats.tsv | col 4 |
-| NumResidues | Number of amino acids | PomBase   | PeptideStats.tsv | col 5 |
-| G | Glycine | PomBase   | aa_composition.tsv | col 5 |
-| A | Alanine | PomBase   | aa_composition.tsv | col 5 |
-| L | Leucine | PomBase   | aa_composition.tsv | col 5 |
-| M | Methionine | PomBase   | aa_composition.tsv | col 5 |
-| F | Phenylalanine | PomBase   | aa_composition.tsv | col 5 |
-| W | Tryptophan | PomBase   | aa_composition.tsv | col 5 |
-| K | Lysine | PomBase   | aa_composition.tsv | col 5 |
-| Q | Glutamine | PomBase   | aa_composition.tsv | col 5 |
-| E | Glutamic acid | PomBase   | aa_composition.tsv | col 5 |
-| S | Serine | PomBase   | aa_composition.tsv | col 5 |
-| P | Proline | PomBase   | aa_composition.tsv | col 5 |
-| V | Valine | PomBase   | aa_composition.tsv | col 5 |
-| I | Isoleucine | PomBase   | aa_composition.tsv | col 5 |
-| C | Cysteine | PomBase   | aa_composition.tsv | col 5 |
-| Y | Tyrosine | PomBase   | aa_composition.tsv | col 5 |
-| H | Histidine | PomBase   | aa_composition.tsv | col 5 |
-| R | Arginine | PomBase   | aa_composition.tsv | col 5 |
-| N | Asparagine | PomBase   | aa_composition.tsv | col 5 |
-| D | Aspartic acid | PomBase   | aa_composition.tsv | col 5 |
-| T | Threonine | PomBase   | aa_composition.tsv | col 5 |
+| Mass | Molecular weight (kDa)   | PomBase   | https://www.pombase.org/data/Protein_data/PeptideStats.tsv | col 2 |
+| pI | Isoelectric point (predicted pH)   | PomBase   | https://www.pombase.org/data/Protein_data/PeptideStats.tsv | col 3 |
+| Charge | Charge | PomBase   | https://www.pombase.org/data/Protein_data/PeptideStats.tsv | col 4 |
+| NumResidues | Number of amino acids | PomBase   | https://www.pombase.org/data/Protein_data/PeptideStats.tsv | col 5 |
+| G | Glycine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| A | Alanine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| L | Leucine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| M | Methionine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| F | Phenylalanine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| W | Tryptophan | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| K | Lysine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| Q | Glutamine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| E | Glutamic acid | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| S | Serine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| P | Proline | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| V | Valine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| I | Isoleucine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| C | Cysteine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| Y | Tyrosine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| H | Histidine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| R | Arginine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| N | Asparagine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| D | Aspartic acid | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
+| T | Threonine | PomBase   | https://www.pombase.org/data/Protein_data/aa_composition.tsv | col 5 |
 | ncont | Nitrogen content | NA   | NA | NA |
 | scont | Sulphur content | NA   | NA | NA |
 | FoldIndex | Fold Index | NA   | NA | NA |
@@ -99,5 +99,5 @@ Field Details
 | Abs_centromere | Abs. distance from centromere | NA   | NA | NA |
 | Rel_telomere | Relative distance from telomere | NA   | NA | NA |
 | Rel_centromere | Relative distance from centromere | NA   | NA | NA |
-| GO:XXXXX | Ordered GO terms | PomBase   | PAF! | col 5 |
-| FYPO:XXXX | Ordered FYPO terms | PomBase | PAF! File | NA |
+| GO:XXXXX | Ordered GO terms | PomBase   | https://pombase.org/data/releases/latest/pombase-2025-01-01.gaf.gz | col 5 |
+| FYPO:XXXX | Ordered FYPO terms | PomBase | https://pombase.org/data/releases/latest/pombase-2025-01-01.phaf.gz | NA |

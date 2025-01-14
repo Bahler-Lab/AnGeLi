@@ -11,6 +11,8 @@ POMBE_BASE_URL = 'https://www.pombase.org/data'
 PEPTIDE_URL = POMBE_BASE_URL + "/Protein_data/PeptideStats.tsv"
 PROTEIN_COMPOSITION_URL = POMBE_BASE_URL + "/Protein_data/aa_composition.tsv"
 ALL_CHROMOSOMES_GFF3_URL = POMBE_BASE_URL + "/releases/latest/gff/Schizosaccharomyces_pombe_all_chromosomes.gff3"
+GO_TERMS = "/releases/latest/pombase-2025-01-01.gaf.gz"
+FYPO_TERMS = "/releases/latest/pombase-2025-01-01.phaf.gz"
 
 class Peptide(Enum):
     SYSTEMATIC_ID = 0
@@ -41,11 +43,14 @@ class ProteinComposition(Enum):
     W = 19
     Y = 20
 
-try:
     class AnGeLi:
         def __init__(self):
-            """Empty Constructor"""
+            """Constructor lazy loads the data, so declare values and assign them as None"""
             self.peptides = None
+            self.amino_acids = None
+            self.chromosome = None
+            self.go_terms = None
+            self.fypo_terms = None
 
         def download_file(self, url):
             """
@@ -131,6 +136,12 @@ try:
             print("Building file headers")
 
         def search_protein_features(self, protein_id):
+            """
+            Parses a GG3 file and returns the features.
+
+            :param url: The gff file object
+            :return: A gffutils database object
+            """
             if self.peptides is None:   
                 print("Loading protein features")
                 self.peptides = self.parse_tsv(self.download_file(PEPTIDE_URL))
@@ -138,24 +149,68 @@ try:
             return list(filter(lambda sublist: sublist[Peptide.SYSTEMATIC_ID.value] == protein_id, self.peptides))
             
 
-        def build_composition_features(self):
-            print("Building composition features")
+        def search_amino_acids(self, protein_id):
+            """
+            Finds the amino acid composition of a protein and returns the percentage composition of each amino acid.
 
-        def build_chromosome_features(self):
-            print("Building chromosome features")
+            :param url: The protein to search for
+            :return: A list of the percentage composition of amino acids in the protein
+            """
+            if self.amino_acids is None:   
+                print("Loading Amino acids")
+                self.amino_acids = self.parse_tsv(self.download_file(PROTEIN_COMPOSITION_URL))
+            
+            data = list(filter(lambda sublist: sublist[Peptide.SYSTEMATIC_ID.value] == protein_id, self.peptides))
 
-        def build_go_terms(self):
-            print("Building GO terms")
+            # There should only be one result! 
+            if len(self.amino_acids) == 0:
+                print("No amino acid data found")
+                return None
+            elif len(self.amino_acids) > 1:
+                print("Multiple amino acid data found")
+                return None
+            else:
 
-        def build_fypo_terms(self):
-            print("Building FYPO terms")
+                return None
+
+
+            return None
+
+        def search_chromosome_features(self):
+            """
+            
+
+            :param url: 
+            :return: 
+            """
+            if self.chromosome is None:   
+                print("Loading Amino acids")
+                self.chromosome = self.parse_gff3(self.download_file(ALL_CHROMOSOMES_GFF3_URL))
+
+        def find_go_terms(self):
+            """
+            
+
+            :param url: 
+            :return: 
+            """
+            if self.go_terms is None:   
+                print("Loading Amino acids")
+                self.go_terms = self.parse(self.download_and_decompress_gzip(GO_TERMS))
+
+        def find_fypo_terms(self):
+            """
+            
+
+            :param url: 
+            :return: 
+            """
+            if self.chromosome is None:   
+                print("Loading Amino acids")
+                self.chromosome = self.parse_gff3(self.download_and_decompress_gzip(FYPO_TERMS))
 
         def parse_original_AnGeLiDatabase(self):
             print("Parsing the original AnGeLiDatabase.txt file")
-    
-
-except Exception as e:
-    print(f"Error in class definition: {e}")
 
 def main():
     """
