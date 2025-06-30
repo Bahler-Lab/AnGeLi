@@ -1,0 +1,155 @@
+2025-04-21 22:16:38,671 - INFO - Starting the AnGeLi database reconstruction at 2025-04-21 22:16:38.670684
+2025-04-21 22:17:01,135 - INFO - Starting the AnGeLi database reconstruction at 2025-04-21 22:17:01.135587
+2025-04-21 22:51:45,523 - INFO - Starting the AnGeLi database reconstruction at 2025-04-21 22:51:45.523055
+2025-04-21 22:52:04,312 - INFO - Starting the AnGeLi database reconstruction at 2025-04-21 22:52:04.311624
+2025-04-21 22:52:09,047 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-21 22:55:27,228 - INFO - Starting the AnGeLi database reconstruction at 2025-04-21 22:55:27.228074
+2025-04-21 22:55:39,913 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-21 22:58:11,138 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-21 22:58:12,349 - INFO - Loading GO Terms
+2025-04-21 23:06:47,997 - INFO - Starting the AnGeLi database reconstruction at 2025-04-21 23:06:47.997147
+2025-04-21 23:06:48,005 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-21 23:06:48,005 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-21 23:06:48,005 - INFO - Loading GO Terms
+2025-04-22 16:12:29,998 - INFO - Starting the AnGeLi database reconstruction at 2025-04-22 16:12:29.998254
+2025-04-22 16:12:31,069 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-22 16:12:31,070 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-22 16:12:32,555 - INFO - Loading GO Terms
+2025-04-22 16:12:56,374 - INFO - Starting the AnGeLi database reconstruction at 2025-04-22 16:12:56.374068
+2025-04-22 16:12:56,379 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-22 16:12:56,379 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-22 16:12:59,508 - INFO - Loading GO Terms
+2025-04-22 16:13:45,410 - INFO - Starting the AnGeLi database reconstruction at 2025-04-22 16:13:45.410202
+2025-04-22 16:13:45,416 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-22 16:13:45,416 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-22 16:13:46,034 - INFO - Loading GO Terms
+2025-04-22 16:15:01,485 - ERROR - Failed to download the file. Status code: 404
+2025-04-22 16:21:20,813 - INFO - Starting the AnGeLi database reconstruction at 2025-04-22 16:21:20.812601
+2025-04-22 16:21:20,818 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-22 16:21:20,818 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-22 16:21:20,818 - INFO - Loading GO Terms
+2025-04-22 16:23:32,341 - INFO - Starting the AnGeLi database reconstruction at 2025-04-22 16:23:32.340237
+2025-04-22 16:23:32,346 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-22 16:23:32,346 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-22 16:23:32,346 - INFO - Loading GO Terms
+2025-04-22 16:24:53,550 - INFO - Starting the AnGeLi database reconstruction at 2025-04-22 16:24:53.550324
+2025-04-22 16:24:53,557 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-22 16:24:53,557 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-22 16:24:53,557 - INFO - Loading GO Terms
+2025-04-22 16:25:07,970 - INFO - File successfully downloaded and decompressed.
+2025-04-23 12:54:58,269 - INFO - Starting the AnGeLi database reconstruction at 2025-04-23 12:54:58.268614
+2025-04-23 12:54:58,274 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-23 12:54:58,274 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-23 12:54:58,274 - INFO - Loading GO Terms
+2025-04-23 12:55:08,991 - INFO - File successfully downloaded and decompressed.
+2025-04-23 12:56:22,355 - INFO - Starting the AnGeLi database reconstruction at 2025-04-23 12:56:22.355227
+2025-04-23 12:56:22,361 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-23 12:56:22,361 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-23 12:56:22,362 - INFO - Loading GO Terms
+2025-04-23 12:56:24,010 - INFO - File successfully downloaded and decompressed.
+2025-04-23 12:58:37,704 - INFO - Starting the AnGeLi database reconstruction at 2025-04-23 12:58:37.703819
+2025-04-23 12:58:37,709 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-23 12:58:37,710 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-23 12:58:37,710 - INFO - Loading GO Terms
+2025-04-23 12:58:39,299 - INFO - File successfully downloaded and decompressed.
+2025-04-23 13:07:39,553 - INFO - Starting the AnGeLi database reconstruction at 2025-04-23 13:07:39.553288
+2025-04-23 13:07:39,558 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-23 13:07:39,558 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-23 13:07:39,558 - INFO - Loading GO Terms
+2025-04-23 13:07:41,546 - INFO - File successfully downloaded and decompressed.
+2025-04-23 23:11:26,536 - INFO - Starting the AnGeLi database reconstruction at 2025-04-23 23:11:26.536011
+2025-04-23 23:11:26,542 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-04-23 23:11:26,543 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-04-23 23:11:26,543 - INFO - Loading GO Terms
+2025-04-23 23:11:29,838 - INFO - File successfully downloaded and decompressed.
+2025-04-23 23:11:38,777 - INFO - Loading FYPO Terms
+2025-04-23 23:15:46,462 - INFO - GO matrix built successfully.
+2025-06-26 23:16:46,478 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:16:46.478324
+2025-06-26 23:16:53,370 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:17:04,658 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:19:40,078 - INFO - Loading GO Terms
+2025-06-26 23:19:49,186 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:19:53,052 - INFO - Loading FYPO Terms
+2025-06-26 23:21:11,617 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:21:11.616718
+2025-06-26 23:21:11,622 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:21:11,622 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:21:11,622 - INFO - Loading GO Terms
+2025-06-26 23:21:13,179 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:21:13,248 - INFO - Loading FYPO Terms
+2025-06-26 23:23:37,554 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:23:37.554038
+2025-06-26 23:23:37,559 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:23:37,559 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:23:37,559 - INFO - Loading GO Terms
+2025-06-26 23:23:38,837 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:23:38,906 - INFO - Loading FYPO Terms
+2025-06-26 23:27:25,432 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:27:25.431768
+2025-06-26 23:27:25,436 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:27:25,436 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:27:25,436 - INFO - Loading GO Terms
+2025-06-26 23:27:26,574 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:27:26,636 - INFO - Loading FYPO Terms
+2025-06-26 23:29:59,696 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:29:59.696014
+2025-06-26 23:29:59,701 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:29:59,701 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:29:59,701 - INFO - Loading GO Terms
+2025-06-26 23:30:02,823 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:30:02,893 - INFO - Loading FYPO Terms
+2025-06-26 23:30:07,306 - INFO - GO matrix built successfully.
+2025-06-26 23:30:27,128 - ERROR - FYPO terms not found. Cannot build FYPO matrix.
+2025-06-26 23:53:21,950 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:53:21.949852
+2025-06-26 23:53:21,956 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:53:21,956 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:53:21,957 - INFO - Loading GO Terms
+2025-06-26 23:53:32,800 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:53:46,289 - INFO - Loading FYPO Terms
+2025-06-26 23:54:25,032 - INFO - Starting the AnGeLi database reconstruction at 2025-06-26 23:54:25.032315
+2025-06-26 23:54:25,035 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-26 23:54:25,035 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-26 23:54:25,036 - INFO - Loading GO Terms
+2025-06-26 23:54:42,291 - INFO - File successfully downloaded and decompressed.
+2025-06-26 23:54:49,423 - INFO - Loading FYPO Terms
+2025-06-29 21:18:41,596 - INFO - Starting the AnGeLi database reconstruction at 2025-06-29 21:18:41.596082
+2025-06-29 21:18:41,598 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-29 21:18:41,598 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-29 21:18:41,598 - INFO - Loading GO Terms
+2025-06-29 21:18:44,425 - INFO - File successfully downloaded and decompressed.
+2025-06-29 21:18:44,479 - INFO - Loading FYPO Terms
+2025-06-29 21:19:07,802 - INFO - Starting the AnGeLi database reconstruction at 2025-06-29 21:19:07.802506
+2025-06-29 21:19:10,972 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-29 21:19:10,972 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-29 21:19:10,972 - INFO - Loading GO Terms
+2025-06-29 21:19:15,634 - INFO - File successfully downloaded and decompressed.
+2025-06-29 21:19:22,611 - INFO - Loading FYPO Terms
+2025-06-29 21:22:02,839 - INFO - Starting the AnGeLi database reconstruction at 2025-06-29 21:22:02.839312
+2025-06-29 21:22:02,845 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-29 21:22:02,845 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-29 21:22:02,846 - INFO - Loading GO Terms
+2025-06-29 21:22:03,875 - INFO - File successfully downloaded and decompressed.
+2025-06-29 21:22:03,944 - INFO - Loading FYPO Terms
+2025-06-29 21:22:23,649 - INFO - File successfully downloaded and decompressed.
+2025-06-29 21:26:31,162 - INFO - GO matrix built successfully.
+2025-06-30 08:47:32,984 - INFO - Starting the AnGeLi database reconstruction at 2025-06-30 08:47:32.984190
+2025-06-30 08:47:32,990 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-30 08:47:32,990 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-30 08:47:32,990 - INFO - Loading GO Terms
+2025-06-30 08:47:44,869 - INFO - File successfully downloaded and decompressed.
+2025-06-30 08:47:44,940 - INFO - Loading FYPO Terms
+2025-06-30 08:47:54,415 - INFO - File successfully downloaded and decompressed.
+2025-06-30 08:48:14,171 - INFO - GO matrix built successfully.
+2025-06-30 08:56:04,040 - INFO - Starting the AnGeLi database reconstruction at 2025-06-30 08:56:04.039619
+2025-06-30 08:56:04,045 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-30 08:56:04,045 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-30 08:56:04,045 - INFO - Loading GO Terms
+2025-06-30 08:56:11,115 - INFO - File successfully downloaded and decompressed.
+2025-06-30 08:56:11,181 - INFO - Loading FYPO Terms
+2025-06-30 08:56:16,668 - INFO - File successfully downloaded and decompressed.
+2025-06-30 08:56:19,918 - INFO - GO matrix built successfully.
+2025-06-30 09:48:54,590 - INFO - Starting the AnGeLi database reconstruction at 2025-06-30 09:48:54.589853
+2025-06-30 09:48:54,595 - INFO - Parsing the original AnGeLiDatabase.txt file
+2025-06-30 09:48:54,595 - INFO - Regenerating the AnGeLiDatabase.txt file
+2025-06-30 09:48:54,595 - INFO - Loading GO Terms
+2025-06-30 09:48:58,650 - INFO - File successfully downloaded and decompressed.
+2025-06-30 09:48:58,719 - INFO - Loading FYPO Terms
+2025-06-30 09:49:05,552 - INFO - File successfully downloaded and decompressed.
+2025-06-30 09:49:09,089 - INFO - GO matrix built successfully.
+2025-06-30 09:49:22,607 - INFO - FYPO matrix built successfully.
