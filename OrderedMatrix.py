@@ -29,6 +29,16 @@ class OrderedMatrix:
             # Append a new value (1 or 0) to the end of each column's list.
             for col in self.header:
                 self.columns[col].append(1 if col in row_items else 0)
+                
+    def get_row(self, row_key: str) -> list[str]:
+        """
+        Returns the row corresponding to the given row_key.
+        If the row_key does not exist, returns None.
+        """
+        if row_key in self.row_headers:
+            index = self.row_headers.index(row_key)
+            return [self.columns[col][index] for col in self.header]
+        return None
 
     def as_rows(self):
         return list(zip(*self.columns.values()))

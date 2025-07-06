@@ -11,7 +11,10 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import re 
 
-from OrderedMatrix import OrderedMatrix 
+from OrderedMatrix import OrderedMatrix
+from fypo_data import FYPOData
+from go_data import GOData
+from reference_data import ReferenceData 
 
 logging.basicConfig(
     filename='angeli_output.log',  # Log file name
@@ -145,7 +148,7 @@ class AnGeLi:
             logging.error(f"Failed to download the file. Status code: {response.status_code}")
             return None
         
-    def _parse_tsv(self, file_obj, encoding='utf-8'):
+    def _parse_tsv(self, file_obj):
         """
         Parses a TSV (Tab-Separated Values) stream and returns a list of rows.
 
@@ -155,16 +158,23 @@ class AnGeLi:
         Returns:
         - List[List[str]]: A list of rows, where each row is a list of columns.
         """
-        if hasattr(file_obj, 'read'):
-            file_obj.seek(0)
-            decoded_text = file_obj.read().decode(encoding)
-        elif isinstance(file_obj, str):
-            decoded_text = file_obj
-        else:
-            raise TypeError("Input must be a bytes stream or a string.")
+        list_of_lists = []
+        try:
+            # Open the file using 'with' for safe handling
+            # newline='' is recommended practice for the csv module
+            with open(file_obj, 'r', newline='', encoding='utf-8') as tsvfile:
+                # Create a csv reader and specify the delimiter as a tab ('\t')
+                tsv_reader = csv.reader(tsvfile, delimiter='\t')
 
-        tsv_reader = csv.reader(decoded_text.splitlines(), delimiter='\t')
-        return [row for row in tsv_reader]
+                # Loop over each row in the reader object
+                for row in tsv_reader:
+                    list_of_lists.append(row)
+        except FileNotFoundError:
+            print(f"Error: The file at {file_obj} was not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+ 
+        return list_of_lists
 
     def _parse_gff3(self, file_obj):
         """
@@ -437,8 +447,84 @@ class AnGeLi:
                 
         # Return the matrix
         return fypo_matrix
-     
-    def regenerate_file(self, output_path='AnGeLiDatabase.txt'):
+    
+    def build_headers(self) -> list[list[str]]:
+        """
+        Builds the headers for the AnGeLiDatabase.txt file.
+        """
+        
+        count = len(ReferenceData.ROW_1)
+        
+        ROW_7 = []
+        ROW_7.append("Update")
+        for i in range(1, count):
+            ROW_7.append(datetime.now().strftime("%d-%m-%Y"))
+            
+        headers = [
+            ReferenceData.ROW_1,
+            ReferenceData.ROW_2,
+            ReferenceData.ROW_3,
+            ReferenceData.ROW_4,
+            ReferenceData.ROW_5,
+            ReferenceData.ROW_6,
+            ROW_7,
+            ReferenceData.ROW_8
+        ]
+        return headers
+    
+    def fetch_original_go_terms(self) -> list[GOData]:
+        """
+        Fetches the original GO terms from the original AnGeLiDatabase.txt file.
+        The MASTER files starts the GO terms at index 50, so we will start from there.
+        :return: A list of GOData objects containing the original GO terms.
+        """
+        if self.original_file is None:
+            logging.error("Original file not parsed. Cannot fetch GO terms.")
+            return None
+        
+        go_terms = []
+        
+        for i in range(49, 6274):
+            go_terms.append(GOData(
+                go_id=self.original_file[0][i],
+                name=self.original_file[1][i],
+                measurement=self.original_file[2][i],
+                namespace=self.original_file[3][i],
+                source=self.original_file[4][i],
+                terms_with_annotations=self.original_file[5][i],
+                date=datetime.now().strftime("%d-%m-%Y"),
+                link=self.original_file[7][i]
+            ))
+        
+        return go_terms
+
+    def fetch_original_fypo_terms(self) -> list[FYPOData]:
+        """
+        Fetches the original FYPO terms from the original AnGeLiDatabase.txt file
+        The MASTER files starts the FYPO terms at index 6278, so we will start from there.
+        :return: A list of FYPOData objects containing the original FYPO terms.
+        """
+        if self.original_file is None:
+            logging.error("Original file not parsed. Cannot fetch FYPO terms.")
+            return None
+        
+        fypo_terms = []
+        for i in range(6277, 10451):
+            fypo_terms.append(FYPOData(
+                fypo_id=self.original_file[0][i],
+                name=self.original_file[1][i],
+                measurement=self.original_file[2][i],
+                namespace=self.original_file[3][i],
+                source=self.original_file[4][i],
+                terms_with_annotations=self.original_file[5][i],
+                date=datetime.now().strftime("%d-%m-%Y"),
+                link=self.original_file[7][i]
+            ))
+        
+        return fypo_terms
+                
+    
+    def regenerate_file(self, output_file='AnGeLiDatabase.txt'):
         """
         Regenerates the AnGeLiDatabase.txt file with updated information.
         """
@@ -451,30 +537,153 @@ class AnGeLi:
         self.find_go_terms()
         self.find_fypo_terms()
         
-        # Build the matrix of GO terms and FYPO terms to replace the existing data 
+        # Build the matrix of NEW GO terms and FYPO terms from POMBASE
         go_matrix = self.build_GO_matrix()
         fypo_matrix = self.build_FYPO_matrix()
         
-        # Iterate over the original file and update the fields
-        for i, row in enumerate(self.original_file):
-            # Update the fields as needed
-            # Example: row[0] = "Updated value"
-            # You can use self.peptides, self.amino_acids, etc. to get the updated values
-            row[4] = "Test"
-
-
-        # Save the updated data to a new file
-        with open(output_path, 'w') as f:
-            for row in self.original_file:
-                f.write('\t'.join(row) + '\n')
+        # Fetch the original GO and FYPO terms from the original file (we will use this for the metadata for the new terms)
+        original_go_terms = self.fetch_original_go_terms()
+        original_fypo_terms = self.fetch_original_fypo_terms()
         
-        logging.info("AnGeLiDatabase.txt file regenerated successfully.")
+        # The headers are the first 8 rows that hold metadata about the genes
+        final_data = self.build_headers()
+        
+        for h in go_matrix.header:
+            # Add the GO term to the final data
+            final_data[0].append(h)
+            
+            found = False
+            for oh in original_go_terms:
+                if h == oh.go_id:
+                    final_data[1].append(oh.name)
+                    final_data[2].append(oh.measurement)
+                    final_data[3].append(oh.namespace)
+                    final_data[4].append(oh.source)
+                    final_data[5].append(oh.terms_with_annotations)
+                    final_data[6].append(oh.date)
+                    final_data[7].append(oh.link)
+                    found = True
+                    break
+
+            if not found:
+                go_term = GOData.from_api(h) # GO term for 'cytosol'
+                if go_term:
+                    final_data[1].append(go_term.name)
+                    final_data[2].append(go_term.measurement)
+                    final_data[3].append(go_term.namespace)
+                    final_data[4].append(go_term.source)
+                    final_data[5].append(go_term.terms_with_annotations)
+                    final_data[6].append(go_term.date)
+                    final_data[7].append(go_term.link)
+                else:
+                    logging.warning(f"GO term {h} not found.")
+
+        # ORDER maybe important, so we'll put in the two reference values here
+        for i in range(6275, 6277):
+           final_data[0].append(self.original_file[0][i])
+           final_data[1].append(self.original_file[1][i])
+           final_data[2].append(self.original_file[2][i])
+           final_data[3].append(self.original_file[3][i])
+           final_data[4].append(self.original_file[4][i])
+           final_data[5].append(self.original_file[5][i])
+           final_data[6].append(datetime.now().strftime("%d-%m-%Y"))
+           final_data[7].append(self.original_file[7][i])
+            
+                
+        for h in fypo_matrix.header:
+            # Add the FYPO term to the final data
+            final_data[0].append(h)
+            
+            found = False
+            for oh in original_fypo_terms:
+                if h == oh.fypo_id:
+                    final_data[1].append(oh.name)
+                    final_data[2].append(oh.measurement)
+                    final_data[3].append(oh.namespace)
+                    final_data[4].append(oh.source)
+                    final_data[5].append(oh.terms_with_annotations)
+                    final_data[6].append(oh.date)
+                    final_data[7].append(oh.link)
+                    found = True
+                    break
+
+            if not found:
+                fypo_term = FYPOData.from_api(h) # FYPO term for 'cytosol'
+                if fypo_term:
+                    final_data[1].append(fypo_term.name)
+                    final_data[2].append(fypo_term.measurement)
+                    final_data[3].append(fypo_term.namespace)
+                    final_data[4].append(fypo_term.source)
+                    final_data[5].append(fypo_term.terms_with_annotations)
+                    final_data[6].append(fypo_term.date)
+                    final_data[7].append(fypo_term.link)
+                else:
+                    logging.warning(f"FYPO term {h} not found.")
+                    
+        # Append the protein features after the GO and FYPO terms
+        for i in range(10451, len(self.original_file[0])):
+            final_data[0].append(self.original_file[0][i])
+            final_data[1].append(self.original_file[1][i])
+            final_data[2].append(self.original_file[2][i])
+            final_data[3].append(self.original_file[3][i])
+            final_data[4].append(self.original_file[4][i])
+            final_data[5].append(self.original_file[5][i])
+            final_data[6].append(datetime.now().strftime("%d-%m-%Y"))
+            final_data[7].append(self.original_file[7][i])
+
+        # Now add the data for each gene
+        for i in range(8, len(self.original_file)):
+            # Get the gene ID
+            if len(self.original_file[i]) == 0:
+                logging.warning(f"Gene ID at row {i} is empty. Skipping this row.")
+                continue
+            gene_id = self.original_file[i][0]
+            row = []
+            
+            # The first 50 columns are mostly static, so we will copy them over
+            for j in range(0, 50):
+                row.append(self.original_file[i][j])
+            
+            # Find the data in the GO matrix
+            go_data = go_matrix.get_row(gene_id)
+            if go_data is None:
+                logging.warning(f"GO data for gene {gene_id} not found. Using empty data.")
+                go_data = ["0"] * (len(go_matrix.header) - 1)
+    
+            for x in go_data:
+                row.append(x)
+
+            for k in range(6275, 6277):
+                row.append(self.original_file[i][k])
+                
+            fypo_data = fypo_matrix.get_row(gene_id)
+            if fypo_data is None:
+                logging.warning(f"FYPO data for gene {gene_id} not found. Using empty data.")
+                fypo_data = ["0"] * (len(fypo_matrix.header) - 1)
+                
+            for y in fypo_data:
+                row.append(y)
+
+            for l in range(10452, len(self.original_file[i])):
+                row.append(self.original_file[i][l])
+
+            # add the row to the final data
+            final_data.append(row)
+        
+        # Finally write the file to disk
+        with open(output_file, 'w', encoding='utf-8') as f:
+            writer = csv.writer(f, delimiter='\t')
+            
+            # Write all the rows at once
+            writer.writerows(final_data)
+
+        return
 
 def main():
     """
     Reconstruct the AnGeLiDatabase.txt file 
 
-    The method opens and parses the AnGeLiDatabase.txt file
+    The method opens and parses the AnGeLiDatabase_MASTER.txt file, this is the original file
     It then iterates over the various components and downloads the relevant sources and updates the fields.
     For GO and FYPO terms, the entire structure is rebuilt. See the README for more information.
     """
@@ -482,7 +691,7 @@ def main():
     
     parser = argparse.ArgumentParser(description="Reconstruct the AnGeLi database")
     parser.add_argument("--path", type=str, default=None, help="Input file (incuding path)")
-    parser.add_argument("--output_path", type=str, default=None, help="Output file (incuding path)")
+    parser.add_argument("--output_file", type=str, default=None, help="Output file (incuding path)")
 
     args = parser.parse_args()
 
@@ -490,10 +699,10 @@ def main():
     db = AnGeLi()
     parsed = db.parse_original_AnGeLiDatabase(args.path)
     if not parsed:
-        logging.error("Failed to parse the original AnGeLiDatabase.txt file.")
+        logging.error("Failed to parse the original database file file.")
         return
     
-    db.regenerate_file(args.output_path)
+    db.regenerate_file(args.output_file)
     
     logging.info("Finished AnGeLi database reconstruction at %s", datetime.now())
 
