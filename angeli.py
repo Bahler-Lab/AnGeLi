@@ -18,7 +18,7 @@ from reference_data import ReferenceData
 
 logging.basicConfig(
     filename='angeli_output.log',  # Log file name
-    filemode='a',  # Append mode ('w' for overwrite)
+    filemode='w',  # Append mode ('w' for overwrite)
     format='%(asctime)s - %(levelname)s - %(message)s', 
     level=logging.INFO)
 
@@ -648,7 +648,7 @@ class AnGeLi:
             go_data = go_matrix.get_row(gene_id)
             if go_data is None:
                 logging.warning(f"GO data for gene {gene_id} not found. Using empty data.")
-                go_data = ["0"] * (len(go_matrix.header) - 1)
+                go_data = ["0"] * (len(go_matrix.header))
     
             for x in go_data:
                 row.append(x)
@@ -659,7 +659,7 @@ class AnGeLi:
             fypo_data = fypo_matrix.get_row(gene_id)
             if fypo_data is None:
                 logging.warning(f"FYPO data for gene {gene_id} not found. Using empty data.")
-                fypo_data = ["0"] * (len(fypo_matrix.header) - 1)
+                fypo_data = ["0"] * (len(fypo_matrix.header))
                 
             for y in fypo_data:
                 row.append(y)
@@ -668,6 +668,9 @@ class AnGeLi:
                 row.append(self.original_file[i][l])
 
             # add the row to the final data
+            if len(row) != len(final_data[0]):
+                logging.error(f"Row length mismatch at row {i}. Expected {len(final_data[0])}, got {len(row)}. Please check the input data for gene {gene_id}.")
+
             final_data.append(row)
         
         # Finally write the file to disk
